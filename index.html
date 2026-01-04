@@ -3,118 +3,380 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swayam Gupta - Personal Webpage</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Swayam Gupta | AI Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #121212;
-            color: #fff;
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --primary: #38bdf8; /* Cyan */
+            --secondary: #a855f7; /* Purple */
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            scroll-behavior: smooth;
         }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.1) 0%, transparent 20%);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0; /* Start hidden */
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+
+        /* Header */
         header {
-            background: linear-gradient(135deg, #d32f2f, #ff5252);
-            color: white;
-            padding: 2em 0;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            background: linear-gradient(180deg, rgba(15,23,42,0) 0%, var(--bg-color) 100%),
+                        url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
             position: relative;
         }
-        /*header img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid white;
+
+        header h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+        }
+
+        header p {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            max-width: 600px;
+        }
+
+        .scroll-down {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            bottom: 30px;
+            font-size: 2rem;
+            color: var(--primary);
+            animation: bounce 2s infinite;
         }
-        .header-content {
-            padding-top: 100px; /* Adjust for image height */
-        }*/
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+
+        /* Container & Sections */
         .container {
-            width: 85%;
+            width: 90%;
+            max-width: 1000px;
             margin: auto;
-            overflow: hidden;
-            padding: 2em 0;
+            padding-bottom: 4rem;
         }
-        .about, .education, .hobbies, .contact {
-            background: #1e1e1e;
-            padding: 2em;
-            margin: 2em 0;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s, box-shadow 0.3s;
+
+        section {
+            margin: 4rem 0;
         }
-        .about:hover, .education:hover, .hobbies:hover, .contact:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-        }
+
         h2 {
-            color: #ff5252;
-            border-bottom: 2px solid #ff5252;
-            padding-bottom: 0.5em;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
         }
-        p {
-            line-height: 1.6;
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            margin-top: 5px;
+            border-radius: 2px;
         }
+
+        /* Glass Cards */
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(56, 189, 248, 0.15);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        /* Timeline for Experience */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.6rem;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        .role {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .company {
+            font-size: 1rem;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background: rgba(255,255,255,0.05);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        /* Grid for Hobbies/Details */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Contact Links */
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-btn {
+            text-decoration: none;
+            color: white;
+            font-size: 1.5rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .social-btn:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+            box-shadow: 0 0 15px var(--primary);
+        }
+
         footer {
             text-align: center;
-            padding: 1em 0;
-            background-color: #d32f2f;
-            color: white;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
-        .social-links a {
-            color: #ff5252;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 1.2em;
-            transition: color 0.3s;
-        }
-        .social-links a:hover {
-            color: #ff8a80;
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
+            .company { flex-direction: column; align-items: flex-start; gap: 5px; }
         }
     </style>
 </head>
 <body>
-    <header>
+
+    <header class="fade-in">
         <div class="header-content">
             <h1>Swayam Gupta</h1>
-            <p>Student | BCA at IGNOU</p>
+            <p>AI Engineer | Tech Enthusiast | Social Changemaker</p>
+        </div>
+        <div class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
         </div>
     </header>
+
     <div class="container">
-        <section class="about" id="about">
+        
+        <section id="about" class="fade-in delay-1">
             <h2>About Me</h2>
-            <p>Hello! My name is Swayam Gupta, and I am a dedicated and enthusiastic student pursuing a Bachelor of Computer Applications (BCA) from Indira Gandhi National Open University (IGNOU). With a strong passion for technology and computer science, I am always keen to learn and explore new advancements in the field.</p>
-            <p>In addition to my academic pursuits, I have a deep love for music. Listening to my favorite tracks helps me relax and provides a creative escape from my studies. Gaming is another major hobby of mine; it not only entertains me but also enhances my strategic thinking and problem-solving skills. Through gaming, I get to immerse myself in diverse virtual worlds and experience unique storytelling.</p>
-            <p>I am driven by curiosity and a desire to continuously grow both personally and professionally. My goal is to combine my technical knowledge and creative interests to make meaningful contributions in the tech industry.</p>
-        </section>
-        <section class="education" id="education">
-            <h2>Education</h2>
-            <p>10th, Sacred Heart School</p>
-            <p>10+2, National Institute Of Open Schooling</p>
-            <p>Bachelor of Computer Applications (BCA), Indira Gandhi National Open University (IGNOU)</p>
-        </section>
-        <section class="hobbies" id="hobbies">
-            <h2>Hobbies and Interests</h2>
-            <p><strong>Music:</strong> Listening to various genres of music helps me relax and unwind.</p>
-            <p><strong>Gaming:</strong> I enjoy playing video games which enhance my strategic thinking and problem-solving skills.</p>
-        </section>
-        <section class="contact" id="contact">
-            <h2>Contact Information</h2>
-            <p>Phone: +917577032696</p>
-            <p>Email: swayam7577@gmail.com</p>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/swayam-gupta-1781b7265/" target="_blank">LinkedIn</a>
-                <a href="https://www.instagram.com/__swayam_______/" target="_blank">Instagram</a>
+            <div class="card">
+                <p>
+                    I am an innovative <strong>AI Engineer</strong> and a dedicated BCA student at IGNOU, passionate about bridging the gap between theoretical computer science and real-world application. With a strong foundation in data science and machine learning, I strive to build intelligent systems that solve complex problems. 
+                </p>
+                <br>
+                <p>
+                    Beyond the code, I am deeply committed to social causes, leading initiatives to uplift local communities. I believe that technology achieves its highest purpose when it serves humanity. Whether I'm training neural networks, coordinating social drives, or strategizing in a competitive game, I am driven by curiosity and a hunger for impact.
+                </p>
             </div>
         </section>
+
+        <section id="experience" class="fade-in delay-2">
+            <h2>Professional Experience</h2>
+            <div class="timeline">
+                
+                <div class="timeline-item card">
+                    <div class="role">AI Engineer</div>
+                    <div class="company">
+                        <span><i class="fas fa-building"></i> 1Gen</span>
+                        <span class="date">Jan 2026 - Present</span>
+                    </div>
+                    <p class="desc">
+                        Spearheading artificial intelligence initiatives and deploying machine learning models to production. Focusing on scalable AI architecture and optimizing algorithms for performance.
+                    </p>
+                </div>
+
+                <div class="timeline-item card">
+                    <div class="role">Data Scientist Intern</div>
+                    <div class="company">
+                        <span><i class="fas fa-laptop-code"></i> 1Gen</span>
+                        <span class="date">Aug 2025 - Dec 2025</span>
+                    </div>
+                    <p class="desc">
+                        Worked on data preprocessing, feature engineering, and predictive modeling. Collaborated with the engineering team to analyze complex datasets and derive actionable business insights.
+                    </p>
+                </div>
+
+                <div class="timeline-item card">
+                    <div class="role">Content Moderator</div>
+                    <div class="company">
+                        <span><i class="fas fa-check-circle"></i> Krayonnz</span>
+                        <span class="date">Jun 2023 - Aug 2023</span>
+                    </div>
+                    <p class="desc">
+                        Ensured platform integrity by monitoring user-generated content, enforcing community guidelines, and maintaining a high standard of quality for the educational ecosystem.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="volunteering" class="fade-in delay-3">
+            <h2>Social Impact</h2>
+            <div class="card">
+                <div class="role" style="color: var(--secondary);">District Coordinator</div>
+                <div class="company">
+                    <span><i class="fas fa-hand-holding-heart"></i> Vrikshit Foundation, Dibrugarh</span>
+                    <span class="date">March 2023 - Present</span>
+                </div>
+                <p>
+                    Leading volunteer teams to execute social welfare campaigns. Responsible for organizing clean-up drives, awareness camps, and coordinating with local authorities to drive sustainable change in the Dibrugarh district.
+                </p>
+            </div>
+        </section>
+
+        <div class="grid-2 fade-in delay-4">
+            
+            <section id="education">
+                <h2>Education</h2>
+                <div class="card">
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 1rem;">
+                            <strong>Bachelor of Computer Applications (BCA)</strong><br>
+                            <span style="color: var(--text-muted);">IGNOU (Pursuing)</span>
+                        </li>
+                        <li style="margin-bottom: 1rem;">
+                            <strong>Senior Secondary (10+2)</strong><br>
+                            <span style="color: var(--text-muted);">National Institute Of Open Schooling</span>
+                        </li>
+                        <li>
+                            <strong>Secondary (10th)</strong><br>
+                            <span style="color: var(--text-muted);">Sacred Heart School</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="hobbies">
+                <h2>Interests</h2>
+                <div class="card">
+                    <p style="margin-bottom: 1rem;">
+                        <i class="fas fa-gamepad" style="color: var(--primary); width: 20px;"></i> 
+                        <strong>Gaming:</strong> An avid gamer who enjoys immersive storytelling and strategic gameplay. It sharpens my problem-solving reflexes.
+                    </p>
+                    <p>
+                        <i class="fas fa-music" style="color: var(--secondary); width: 20px;"></i> 
+                        <strong>Music:</strong> Music is my creative fuel. I explore various genres to find rhythm in chaos and relaxation after a long day of coding.
+                    </p>
+                </div>
+            </section>
+        </div>
+
+        <section id="contact" class="fade-in delay-4" style="text-align: center;">
+            <h2>Let's Connect</h2>
+            <p>Open to collaborations and tech discussions.</p>
+            
+            <div class="social-links" style="justify-content: center;">
+                <a href="mailto:swayam7577@gmail.com" class="social-btn" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="tel:+917577032696" class="social-btn" title="Phone"><i class="fas fa-phone"></i></a>
+                <a href="https://www.linkedin.com/in/swayam-gupta-1781b7265/" target="_blank" class="social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/__swayam_______/" target="_blank" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </section>
+
     </div>
+
     <footer>
-        <p>&copy; 2024 Swayam Gupta</p>
+        <p>&copy; 2026 Swayam Gupta. Built with <i class="fas fa-heart" style="color: var(--secondary);"></i> and Code.</p>
     </footer>
+
 </body>
 </html>
