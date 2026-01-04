@@ -10,18 +10,14 @@
     <style>
         :root {
             --bg-color: #0f172a;
-            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-bg: rgba(30, 41, 59, 0.6);
             --primary: #38bdf8; /* Cyan */
             --secondary: #a855f7; /* Purple */
             --text-main: #f1f5f9;
             --text-muted: #94a3b8;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: 'Poppins', sans-serif;
@@ -36,29 +32,17 @@
 
         /* Animations */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
-        .fade-in {
-            animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0; /* Start hidden */
-        }
-
+        .fade-in { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; }
         .delay-1 { animation-delay: 0.2s; }
         .delay-2 { animation-delay: 0.4s; }
         .delay-3 { animation-delay: 0.6s; }
-        .delay-4 { animation-delay: 0.8s; }
 
         /* Header */
         header {
-            min-height: 80vh;
+            min-height: 70vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -66,180 +50,100 @@
             text-align: center;
             background: linear-gradient(180deg, rgba(15,23,42,0) 0%, var(--bg-color) 100%),
                         url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
-            position: relative;
         }
 
         header h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 700;
             background: linear-gradient(to right, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 0.5rem;
-            letter-spacing: -1px;
         }
 
-        header p {
-            font-size: 1.5rem;
-            color: var(--text-muted);
-            max-width: 600px;
-        }
+        header p { font-size: 1.2rem; color: var(--text-muted); }
 
-        .scroll-down {
-            position: absolute;
-            bottom: 30px;
-            font-size: 2rem;
-            color: var(--primary);
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-10px);}
-            60% {transform: translateY(-5px);}
-        }
-
-        /* Container & Sections */
-        .container {
-            width: 90%;
-            max-width: 1000px;
-            margin: auto;
-            padding-bottom: 4rem;
-        }
-
-        section {
-            margin: 4rem 0;
-        }
-
+        /* Layout */
+        .container { width: 90%; max-width: 1100px; margin: auto; padding-bottom: 4rem; }
+        section { margin: 4rem 0; }
+        
         h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            position: relative;
-            display: inline-block;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--primary);
+            padding-left: 15px;
         }
 
-        h2::after {
-            content: '';
-            display: block;
-            width: 50%;
-            height: 4px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            margin-top: 5px;
-            border-radius: 2px;
-        }
-
-        /* Glass Cards */
+        /* Cards */
         .card {
             background: var(--card-bg);
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
         }
-
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 40px rgba(56, 189, 248, 0.15);
             border-color: rgba(56, 189, 248, 0.3);
         }
 
-        /* Timeline for Experience */
-        .timeline {
-            position: relative;
-            padding-left: 2rem;
-            border-left: 2px solid rgba(255,255,255,0.1);
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 2.5rem;
-        }
-
+        /* Experience Timeline */
+        .timeline { border-left: 2px solid rgba(255,255,255,0.1); padding-left: 2rem; }
+        .timeline-item { position: relative; margin-bottom: 2rem; }
         .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -2.6rem;
-            top: 5px;
-            width: 16px;
-            height: 16px;
-            background: var(--primary);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--primary);
+            content: ''; position: absolute; left: -2.6rem; top: 5px;
+            width: 16px; height: 16px; background: var(--primary);
+            border-radius: 50%; box-shadow: 0 0 10px var(--primary);
+        }
+        .role-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .role-title { font-size: 1.2rem; font-weight: 600; color: var(--text-main); }
+        .role-company { color: var(--primary); font-weight: 500; }
+        .role-date { font-size: 0.85rem; color: var(--text-muted); background: rgba(255,255,255,0.05); padding: 2px 8px; border-radius: 4px; }
+
+        /* Projects Grid */
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+        
+        .project-card { display: flex; flex-direction: column; justify-content: space-between; }
+        .project-card h3 { color: var(--primary); margin-bottom: 0.5rem; font-size: 1.2rem; }
+        .project-card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; flex-grow: 1; }
+        
+        .tech-stack { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1.2rem; }
+        .tech-badge { 
+            font-size: 0.75rem; 
+            background: rgba(168, 85, 247, 0.15); 
+            color: var(--secondary); 
+            padding: 3px 8px; 
+            border-radius: 4px; 
+            border: 1px solid rgba(168, 85, 247, 0.3);
         }
 
-        .role {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--primary);
+        .project-link { 
+            text-decoration: none; 
+            color: white; 
+            font-size: 0.9rem; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; 
+            transition: color 0.3s; 
+            margin-top: auto;
         }
+        .project-link:hover { color: var(--primary); }
 
-        .company {
-            font-size: 1rem;
-            color: var(--text-main);
-            margin-bottom: 0.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .date {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            background: rgba(255,255,255,0.05);
-            padding: 2px 8px;
-            border-radius: 4px;
-        }
-
-        /* Grid for Hobbies/Details */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        /* Contact Links */
-        .social-links {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
+        /* Contact & Footer */
+        .social-links { display: flex; gap: 1.5rem; justify-content: center; margin-top: 2rem; }
         .social-btn {
-            text-decoration: none;
-            color: white;
-            font-size: 1.5rem;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+            text-decoration: none; color: white; font-size: 1.5rem;
+            width: 50px; height: 50px; border-radius: 50%;
             background: rgba(255,255,255,0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-            border: 1px solid rgba(255,255,255,0.1);
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s; border: 1px solid rgba(255,255,255,0.1);
         }
+        .social-btn:hover { background: var(--primary); transform: scale(1.1); box-shadow: 0 0 15px var(--primary); }
+        footer { text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.05); }
 
-        .social-btn:hover {
-            background: var(--primary);
-            transform: scale(1.1);
-            box-shadow: 0 0 15px var(--primary);
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-
-        @media (max-width: 768px) {
-            header h1 { font-size: 2.5rem; }
-            .company { flex-direction: column; align-items: flex-start; gap: 5px; }
-        }
     </style>
 </head>
 <body>
@@ -247,10 +151,7 @@
     <header class="fade-in">
         <div class="header-content">
             <h1>Swayam Gupta</h1>
-            <p>AI Engineer | Tech Enthusiast | Social Changemaker</p>
-        </div>
-        <div class="scroll-down">
-            <i class="fas fa-chevron-down"></i>
+            <p>AI Engineer | Data Scientist | Social Changemaker</p>
         </div>
     </header>
 
@@ -259,51 +160,114 @@
         <section id="about" class="fade-in delay-1">
             <h2>About Me</h2>
             <div class="card">
-                <p>
-                    I am an innovative <strong>AI Engineer</strong> and a dedicated BCA student at IGNOU, passionate about bridging the gap between theoretical computer science and real-world application. With a strong foundation in data science and machine learning, I strive to build intelligent systems that solve complex problems. 
-                </p>
-                <br>
-                <p>
-                    Beyond the code, I am deeply committed to social causes, leading initiatives to uplift local communities. I believe that technology achieves its highest purpose when it serves humanity. Whether I'm training neural networks, coordinating social drives, or strategizing in a competitive game, I am driven by curiosity and a hunger for impact.
-                </p>
+                <p>I am an AI Engineer and BCA student at IGNOU with a passion for building intelligent systems. My expertise lies in full-stack development, machine learning, and cloud architecture. I balance my technical pursuits with a strong commitment to social causes through the Vrikshit Foundation.</p>
             </div>
         </section>
 
         <section id="experience" class="fade-in delay-2">
-            <h2>Professional Experience</h2>
+            <h2>Experience</h2>
             <div class="timeline">
                 
-                <div class="timeline-item card">
-                    <div class="role">AI Engineer</div>
-                    <div class="company">
-                        <span><i class="fas fa-building"></i> 1Gen</span>
-                        <span class="date">Jan 2026 - Present</span>
+                <div class="timeline-item">
+                    <div class="role-header">
+                        <div>
+                            <div class="role-title">AI Engineer</div>
+                            <div class="role-company">1Gen</div>
+                        </div>
+                        <div class="role-date">Jan 2026 - Present</div>
                     </div>
-                    <p class="desc">
-                        Spearheading artificial intelligence initiatives and deploying machine learning models to production. Focusing on scalable AI architecture and optimizing algorithms for performance.
-                    </p>
                 </div>
 
-                <div class="timeline-item card">
-                    <div class="role">Data Scientist Intern</div>
-                    <div class="company">
-                        <span><i class="fas fa-laptop-code"></i> 1Gen</span>
-                        <span class="date">Aug 2025 - Dec 2025</span>
+                <div class="timeline-item">
+                    <div class="role-header">
+                        <div>
+                            <div class="role-title">Data Scientist Intern</div>
+                            <div class="role-company">1Gen</div>
+                        </div>
+                        <div class="role-date">Aug 2025 - Dec 2025</div>
                     </div>
-                    <p class="desc">
-                        Worked on data preprocessing, feature engineering, and predictive modeling. Collaborated with the engineering team to analyze complex datasets and derive actionable business insights.
-                    </p>
                 </div>
 
-                <div class="timeline-item card">
-                    <div class="role">Content Moderator</div>
-                    <div class="company">
-                        <span><i class="fas fa-check-circle"></i> Krayonnz</span>
-                        <span class="date">Jun 2023 - Aug 2023</span>
+                <div class="timeline-item">
+                    <div class="role-header">
+                        <div>
+                            <div class="role-title">Content Moderator</div>
+                            <div class="role-company">Krayonnz</div>
+                        </div>
+                        <div class="role-date">Jun 2023 - Aug 2023</div>
                     </div>
-                    <p class="desc">
-                        Ensured platform integrity by monitoring user-generated content, enforcing community guidelines, and maintaining a high standard of quality for the educational ecosystem.
-                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="projects" class="fade-in delay-2">
+            <h2>Featured Projects</h2>
+            <div class="grid-2">
+                
+                <div class="card project-card">
+                    <h3>Solar Energy Manager</h3>
+                    <p>A web platform to optimize solar usage with real-time dashboards, predictive maintenance, and environmental impact tracking for microgrids.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Node.js</span>
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">JavaScript</span>
+                    </div>
+                    <a href="https://github.com/S-W-A-Y-A-M/Solar-Management-App" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i> View Project
+                    </a>
+                </div>
+
+                <div class="card project-card">
+                    <h3>JWTAuthFlow</h3>
+                    <p>Secure authentication system featuring Google OAuth, JWT access control, and protected route management for scalable React apps.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Flask</span>
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">Python</span>
+                    </div>
+                    <a href="https://github.com/S-W-A-Y-A-M/Flask-auth-python" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i> View Project
+                    </a>
+                </div>
+
+                <div class="card project-card">
+                    <h3>Conversational RAG Chatbot</h3>
+                    <p>AI chatbot capable of reading PDFs and images. Uses LangChain and FAISS for retrieval and LLM fallbacks with real-time streaming.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Streamlit</span>
+                        <span class="tech-badge">LangChain</span>
+                        <span class="tech-badge">Mistral-7B</span>
+                    </div>
+                    <a href="https://github.com/S-W-A-Y-A-M/Chatbot" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i> View Project
+                    </a>
+                </div>
+
+                <div class="card project-card">
+                    <h3>Nifty50 Scout</h3>
+                    <p>AI-assisted quantitative stock scanner combining technical analysis, sector rotation, and LLaMA-3 based risk validation.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">R Shiny</span>
+                        <span class="tech-badge">LLaMA-3</span>
+                        <span class="tech-badge">OpenRouter</span>
+                    </div>
+                    <a href="https://github.com/S-W-A-Y-A-M/NIFTY50-Scout" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i> View Project
+                    </a>
+                </div>
+
+                <div class="card project-card">
+                    <h3>Real-Time API Monitor</h3>
+                    <p>Live API log analytics system using WebSockets for real-time tracking, aggregation pipelines, and KPI reporting.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Flask</span>
+                        <span class="tech-badge">MongoDB</span>
+                        <span class="tech-badge">Socket.IO</span>
+                    </div>
+                    <a href="https://github.com/S-W-A-Y-A-M/user_activity_tracker" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i> View Project
+                    </a>
                 </div>
 
             </div>
@@ -312,70 +276,67 @@
         <section id="volunteering" class="fade-in delay-3">
             <h2>Social Impact</h2>
             <div class="card">
-                <div class="role" style="color: var(--secondary);">District Coordinator</div>
-                <div class="company">
-                    <span><i class="fas fa-hand-holding-heart"></i> Vrikshit Foundation, Dibrugarh</span>
-                    <span class="date">March 2023 - Present</span>
+                <div class="role-header">
+                    <div>
+                        <div class="role-title">District Coordinator</div>
+                        <div class="role-company" style="color: var(--secondary);">Vrikshit Foundation</div>
+                    </div>
+                    <div class="role-date">Mar 2023 - Present</div>
                 </div>
-                <p>
-                    Leading volunteer teams to execute social welfare campaigns. Responsible for organizing clean-up drives, awareness camps, and coordinating with local authorities to drive sustainable change in the Dibrugarh district.
-                </p>
             </div>
         </section>
 
-        <div class="grid-2 fade-in delay-4">
-            
-            <section id="education">
+        <div class="grid-2 fade-in delay-3">
+            <section>
                 <h2>Education</h2>
                 <div class="card">
-                    <ul style="list-style: none;">
-                        <li style="margin-bottom: 1rem;">
-                            <strong>Bachelor of Computer Applications (BCA)</strong><br>
-                            <span style="color: var(--text-muted);">IGNOU (Pursuing)</span>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 15px;">
+                            <strong>BCA (Pursuing)</strong><br>
+                            <span style="color: var(--text-muted); font-size: 0.9rem;">IGNOU</span>
                         </li>
-                        <li style="margin-bottom: 1rem;">
+                        <li style="margin-bottom: 15px;">
                             <strong>Senior Secondary (10+2)</strong><br>
-                            <span style="color: var(--text-muted);">National Institute Of Open Schooling</span>
+                            <span style="color: var(--text-muted); font-size: 0.9rem;">NIOS</span>
                         </li>
                         <li>
                             <strong>Secondary (10th)</strong><br>
-                            <span style="color: var(--text-muted);">Sacred Heart School</span>
+                            <span style="color: var(--text-muted); font-size: 0.9rem;">Sacred Heart School</span>
                         </li>
                     </ul>
                 </div>
             </section>
 
-            <section id="hobbies">
+            <section>
                 <h2>Interests</h2>
                 <div class="card">
-                    <p style="margin-bottom: 1rem;">
-                        <i class="fas fa-gamepad" style="color: var(--primary); width: 20px;"></i> 
-                        <strong>Gaming:</strong> An avid gamer who enjoys immersive storytelling and strategic gameplay. It sharpens my problem-solving reflexes.
-                    </p>
-                    <p>
-                        <i class="fas fa-music" style="color: var(--secondary); width: 20px;"></i> 
-                        <strong>Music:</strong> Music is my creative fuel. I explore various genres to find rhythm in chaos and relaxation after a long day of coding.
-                    </p>
+                    <div style="margin-bottom: 15px;">
+                        <strong style="color: var(--primary);"><i class="fas fa-gamepad"></i> Gaming</strong>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Strategic gaming & FPS.</p>
+                    </div>
+                    <div>
+                        <strong style="color: var(--secondary);"><i class="fas fa-music"></i> Music</strong>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Exploring diverse genres.</p>
+                    </div>
                 </div>
             </section>
         </div>
 
-        <section id="contact" class="fade-in delay-4" style="text-align: center;">
-            <h2>Let's Connect</h2>
-            <p>Open to collaborations and tech discussions.</p>
-            
-            <div class="social-links" style="justify-content: center;">
-                <a href="mailto:swayam7577@gmail.com" class="social-btn" title="Email"><i class="fas fa-envelope"></i></a>
-                <a href="tel:+917577032696" class="social-btn" title="Phone"><i class="fas fa-phone"></i></a>
-                <a href="https://www.linkedin.com/in/swayam-gupta-1781b7265/" target="_blank" class="social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.instagram.com/__swayam_______/" target="_blank" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <section id="contact" style="text-align: center;">
+            <h2>Contact</h2>
+            <div class="social-links">
+                <a href="mailto:swayam7577@gmail.com" class="social-btn"><i class="fas fa-envelope"></i></a>
+                <a href="tel:+917577032696" class="social-btn"><i class="fas fa-phone"></i></a>
+                <a href="https://www.linkedin.com/in/swayam-gupta-1781b7265/" target="_blank" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/S-W-A-Y-A-M" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>
+                <a href="https://www.instagram.com/__swayam_______/" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
             </div>
         </section>
 
     </div>
 
     <footer>
-        <p>&copy; 2026 Swayam Gupta. Built with <i class="fas fa-heart" style="color: var(--secondary);"></i> and Code.</p>
+        <p>&copy; 2026 Swayam Gupta.</p>
     </footer>
 
 </body>
